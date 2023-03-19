@@ -1,6 +1,11 @@
+import React from "react";
+import CheckDues from "./components/CheckDues";
+
 const App = () => {
   return (
-    <h2>Hello REACT World!</h2>
+    <>
+      <CheckDues />
+    </>
   );
 }
 
