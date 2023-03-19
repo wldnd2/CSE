@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CheckDues = () => {
   const [name, setName] = useState("");
   const [id, setId] = useState("");
-  const [response, setResponse] = useState("");
+  const navigate = useNavigate();
 
   const handleClick = async () => {
     const url = `https://raipen.gabia.io/API/checkDues/?number=${id}&name=${name}`;
     const res = await fetch(url);
     const data = await res.json();
-    setResponse(JSON.stringify(data));
+    data["student_id"] = id;
+    data["student_name"] = name;
+    console.log(data);
+    navigate("./result", {state: data, name: name, id : id});
   };
 
   return (
@@ -25,9 +29,6 @@ const CheckDues = () => {
       </label>
       <br />
       <button onClick={handleClick}>확인</button>
-      <br />
-      {/* response 변수가 존재하면 <div>{response}</div>를 출력하고, response 변수가 존재하지 않으면 출력하지 않습니다 */}
-      {response && <div>{response}</div>}
     </div>
   );
 }
