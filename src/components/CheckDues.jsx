@@ -16,6 +16,10 @@ const CheckDues = () => {
     navigate("./result", {state: data, name: name, id : id});
   };
 
+  const handleOnKeyPress = (e) => {
+    if (e.key === "Enter") handleClick();
+  };
+
   return (
     <div>
       <label>
@@ -25,7 +29,7 @@ const CheckDues = () => {
       <br />
       <label>
         학번:
-        <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+        <input type="text" value={id} onChange={(e) => setId(e.target.value)} onKeyDown={handleOnKeyPress} />
       </label>
       <br />
       <button onClick={handleClick}>확인</button>
