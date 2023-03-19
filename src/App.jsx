@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CheckDues from "./components/CheckDues";
 import ShowResult from "./components/ShowResult";
+import "./index.css";
 
 const App = () => {
   return (
